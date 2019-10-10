@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CSD4303 Assignment 1</title>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.1.2/jquery.flip.min.js">
+</script>
+<style>
+.flipimg{ 
+width:240px; 
+height:200px; 
+margin:10px; 
+float:left;
+}
+.flipimg > .front{
+position:absolute;
+ width:240px; height:200px;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+
+}
+.flipimg .back{
+position:absolute;
+background:yellow;
+ width:240px; height:200px;
+overflow: hidden;
+backface-visibility: hidden;
+
+}
+.flipimg:hover > .front{
+
+transform: rotateY( -180deg );
+}
+.flipimg:hover > .back{
+transform: rotateY( 0deg );
+}
+</style>
+</head>
+
+<body align="center">
+<div class="flipimg">
+  <div class="back"><h3>Harpreet:</h3><br>
+  Harpreet Singh Bachelor of science in IT, now pursuing Computer software and database development.Major area of interest is Web designing </div>
+  <div class="front"><img src="1.jpg" height="200"; width="240"></div>
+</div>
+<div class="flipimg">
+  <div class="back"><h3>Kulwinder: </h3><br> 
+  Masters in computer applications,now pursuing Computer software and database development.
+Area of interest is mobile application development  </div>
+  <div class="front"><img src="1.jpg" height="200"; width="240"></div>
+</div>
+<div class="flipimg">
+  <div class="back"><h3>Nikhil:</h3><br>
+  Bachelors in Computer application,now pursuing Computer software and database development.
+Area of interest is web designing and development </div>
+  <div class="front"><img src="1.jpg" height="200"; width="240"></div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<input type="text" id="text1" style="border:5px; border-style:double; border-color:#000000";></input>
+
+<input type="button" id="button1" value="Add" onclick="add_list();"></input>
+
+<input type="button" id="button2" value="Display" onclick="display_list();"></input>
+
+<input type="button" id="button3" value="Remove" onclick="remove_list();"></input>
+<br> <br>
+
+<hr>
+<h2> COUNTRIES </h2>
+<div id="Result"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+  var list = [];
+
+function add_list()
+{
+ var item = document.getElementById("text1");
+ if(list.length<10)
+ {
+ list.push(item.value);
+ document.getElementById("text1").value = "";
+ document.getElementById("Result").innerHTML = list;
+ }
+ else
+ {
+ list.sort();
+ document.getElementById("Result").innerHTML = list;
+  alert("Reached maximum limit...");
+ }
+}
+
+function display_list()
+{  
+if(list.length>0)
+{
+   list.sort();
+   alert(list);
+   }
+   else
+ {
+  alert("list is empty.....");
+ }
+}
+
+
+function remove_list()
+{
+ if(list.length>0)
+ {
+
+ var len=list.indexOf(list.value);
+  list.splice(len,1);
+  document.getElementById("Result").innerHTML = list;
+ }
+else
+ {
+  alert("list is empty.....");
+ }
+}
+</script>
+
